@@ -9,7 +9,7 @@ from calculations.Metrics import Metrics
 def index():
     req_body = request.get_json()
     matrix = MatrixConversion(
-        req_body["flow_data"], req_body["year_data"], req_body["start_date"])
+        req_body["flows"], req_body["dates"], req_body["start_date"])
 
     result = {}
     result["flow_matrix"] = np.where(
@@ -19,12 +19,13 @@ def index():
     calculated_metrics = Metrics(
         matrix.flow_matrix, matrix.years_array, None, None)
 
+    result["year_ranges"] = calculated_metrics.year_ranges
     result["DRH"] = calculated_metrics.drh
 
-    result["all_years"] = {}
-    result["all_years"]["average_annual_flows"] = calculated_metrics.average_annual_flows
-    result["all_years"]["standard_deviations"] = calculated_metrics.standard_deviations
-    result["all_years"]["coefficient_variations"] = calculated_metrics.coefficient_variations
+    result["all_year"] = {}
+    result["all_year"]["average_annual_flows"] = calculated_metrics.average_annual_flows
+    result["all_year"]["standard_deviations"] = calculated_metrics.standard_deviations
+    result["all_year"]["coefficient_variations"] = calculated_metrics.coefficient_variations
 
     result["winter"] = {}
     result["winter"]["timings"] = calculated_metrics.winter_timings

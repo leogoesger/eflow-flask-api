@@ -9,17 +9,11 @@ def calc_start_of_summer(matrix):
     """Set adjustable parameters for start of summer date detection"""
     max_zero_allowed_per_year = summer_params['max_zero_allowed_per_year']
     max_nan_allowed_per_year = summer_params['max_nan_allowed_per_year']
-    # determines amount of smoothing for summer timing detection
     sigma = summer_params['sigma']
-    # increased sensitivity returns smaller threshold for derivative
     sensitivity = summer_params['sensitivity']
-    # identifies last major peak after which to search for start date
     peak_sensitivity = summer_params['peak_sensitivity']
-    # max search date for the peak flow date
     max_peak_flow_date = summer_params['max_peak_flow_date']
-    # require that summer start is below this flow threshold
     min_summer_flow_percent = summer_params['min_summer_flow_percent']
-    # Don't calculate flow metrics if max flow is befow this value.
     min_flow_rate = summer_params['min_flow_rate']
 
     start_dates = []

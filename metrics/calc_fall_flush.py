@@ -8,25 +8,17 @@ from params import fall_params
 def calc_fall_flush_timings_durations(flow_matrix, summer_timings):
     max_zero_allowed_per_year = fall_params['max_zero_allowed_per_year']
     max_nan_allowed_per_year = fall_params['max_nan_allowed_per_year']
-    # Don't calculate flow metrics if max flow is befow this value.
     min_flow_rate = fall_params['min_flow_rate']
-    sigma = fall_params['sigma']  # Smaller filter to find fall flush peak
+    sigma = fall_params['sigma']
     wet_season_sigma = fall_params['wet_season_sigma']
-    # Larger filter to find wet season peak
     broad_sigma = fall_params['broad_sigma']
-    peak_sensitivity = fall_params['peak_sensitivity']  # smaller is more peak
-    # smaller is more peak
+    peak_sensitivity = fall_params['peak_sensitivity']
     peak_sensitivity_wet = fall_params['peak_sensitivity_wet']
-    # Maximum duration from start to end, for fall flush peak
     max_flush_duration = fall_params['max_flush_duration']
-    # Return to wet season flow must be certain percentage of that year's max flow
     wet_threshold_perc = fall_params['wet_threshold_perc']
-    # The peak identified to search after for wet season initation
     peak_detect_perc = fall_params['peak_detect_perc']
-    # Size of flush peak, from rising limb to top of peak, has great enough change
     flush_threshold_perc = fall_params['flush_threshold_perc']
     min_flush_threshold = fall_params['min_flush_threshold']
-    # Latest accepted date for fall flush, in Julian Date counting from Oct 1st = 0. (i.e. Dec 15th = 75)
     date_cutoff = fall_params['date_cutoff']
 
     start_dates = []

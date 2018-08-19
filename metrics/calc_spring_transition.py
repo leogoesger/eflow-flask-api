@@ -9,28 +9,18 @@ from params import spring_params
 def calc_spring_transition_timing_magnitude(flow_matrix, summer_timings):
     max_zero_allowed_per_year = spring_params['max_zero_allowed_per_year']
     max_nan_allowed_per_year = spring_params['max_nan_allowed_per_year']
-    # max search date for the peak flow date
     max_peak_flow_date = spring_params['max_peak_flow_date']
-    # left side of search window set around max peak
     search_window_left = spring_params['search_window_left']
-    # right side of search window set around max peak
     search_window_right = spring_params['search_window_right']
-    # smaller => more peaks detection
     peak_sensitivity = spring_params['peak_sensitivity']
-    # Relative flow (Q-Qmin) of start of spring must be certain percentage of peak relative flow (Qmax-Qmin)
     peak_filter_percentage = spring_params['peak_filter_percentage']
     min_max_flow_rate = spring_params['min_max_flow_rate']
-    # Heavy filter to identify major peaks in entire water year
     window_sigma = spring_params['window_sigma']
-    # Smaller filter to identify small peaks in windowed data (smaller sigma val => less filter)
     fit_sigma = spring_params['fit_sigma']
-    # 0.1 - 10, 0.1 being the most sensitive
     sensitivity = spring_params['sensitivity']
-    # the detected date's flow has be certain percetage of the max flow in that region
     min_percentage_of_max_flow = spring_params['min_percentage_of_max_flow']
     lag_time = spring_params['lag_time']
     timing_cutoff = spring_params['timing_cutoff']
-    # Don't calculate flow metrics if max flow is befow this value.
     min_flow_rate = spring_params['min_flow_rate']
 
     timings = []
