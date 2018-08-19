@@ -12,6 +12,7 @@ def index():
         req_body["flows"], req_body["dates"], req_body["start_date"])
 
     result = {}
+    result["year_ranges"] = matrix.year_array
     result["flow_matrix"] = np.where(
         np.isnan(matrix.flow_matrix), None, matrix.flow_matrix).tolist()
     result["start_date"] = matrix.start_date
@@ -19,7 +20,6 @@ def index():
     calculated_metrics = Metrics(
         matrix.flow_matrix, matrix.years_array, None, None)
 
-    result["year_ranges"] = calculated_metrics.year_ranges
     result["DRH"] = calculated_metrics.drh
 
     result["all_year"] = {}
@@ -36,10 +36,11 @@ def index():
     result["fall"] = {}
     result["fall"]["timings"] = calculated_metrics.fall_timings
     result["fall"]["magnitudes"] = calculated_metrics.fall_magnitudes
-    result["fall"]["web_timings"] = calculated_metrics.fall_wet_timings
+    result["fall"]["wet_timings"] = calculated_metrics.fall_wet_timings
     result["fall"]["durations"] = calculated_metrics.fall_durations
 
     result["summer"] = {}
+    result["summer"]["timings"] = calculated_metrics.summer_timings
     result["summer"]["magnitudes_ten"] = calculated_metrics.summer_10_magnitudes
     result["summer"]["magnitudes_fifty"] = calculated_metrics.summer_50_magnitudes
     result["summer"]["durations_flush"] = calculated_metrics.summer_flush_durations
