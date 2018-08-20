@@ -1,0 +1,14 @@
+{
+    "name": "eflow-flask-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/leogoesger/eflow-flask-api.git",
+    "author": "Leo Q <leoq91@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "pm2": "^3.0.3"
+    },
+    "scripts": {
+        "freeze": "pip freeze > requirements.txt"
+    }
+}

@@ -3,3 +3,4 @@ __pycache__
 .vscode
 test_file
 .flaskenv
+node_modules
