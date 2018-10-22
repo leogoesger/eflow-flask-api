@@ -92,8 +92,7 @@ def calc_spring_transition_timing_magnitude(flow_matrix, summer_timings):
 
             """If search window is too small, move on to next value in maxarray. If it is the last value in maxarray, proceed inside loop"""
             if len(flow_data_window) < 50:
-                if counter != len(maxarray)-1:
-                    continue
+                continue
 
             """Fit a spline on top of the Gaussian curve"""
             spl = ip.UnivariateSpline(
