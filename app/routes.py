@@ -3,6 +3,7 @@ from app import app
 from flask import request, jsonify
 from calculations.MatrixConversion import MatrixConversion
 from calculations.Metrics import Metrics
+import simplejson as json
 
 
 @app.route('/api', methods=['GET', 'POST'])
@@ -56,4 +57,7 @@ def index():
     result["fall_winter"] = {}
     result["fall_winter"]["baseflows"] = calculated_metrics.wet_baseflows
 
-    return jsonify(result), 200
+    # import pdb
+    # pdb.set_trace()
+
+    return jsonify(json.dumps(result, ignore_nan=True)), 200
